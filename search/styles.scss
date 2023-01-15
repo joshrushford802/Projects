@@ -1,0 +1,143 @@
+%inline {
+    display:inline-block;
+    padding: 5px;
+}
+
+$full: 100%;
+
+a {
+    color: black;
+    font-family: Verdana;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    @extend %inline;
+}
+
+p {
+    display:inline-block;
+    font-family: Verdana;
+    font-size: 85px;
+}
+
+#advButton {
+    color: white;
+    background-color: #4285F4;
+    border: transparent;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    height: 35px;
+    margin-left: 640px;
+    margin-top: 17px;
+    padding: 11px;
+    width: 130px;
+
+}
+
+#advButton:hover {
+    cursor: pointer;
+}
+
+#advancedGoogle {
+    @extend %inline;
+    float: left;
+}
+
+#advForm {
+    width: auto;
+    padding: 20px;
+}
+
+#advSrch {
+    width: $full;
+}
+
+#form {
+    text-align: center;
+    width: $full;
+}
+
+#Google {
+    @extend %inline;
+    margin-top: 60px;
+    text-align: center;
+    width: $full;
+    height: $full;
+}
+
+#lowerButtons > input {
+    background-color: #FAF9F6;
+    border-radius: 3px;
+    border: transparent;
+    margin: 15px;
+    padding: 14px;
+}
+
+#lowerButtons > input:hover {
+    border: thin solid grey;
+    cursor: pointer;
+}
+
+#searchBar {
+    border-radius: 35px;
+    border: thin solid;
+    margin: 20px;
+    padding: 17px;
+    width: 550px;
+    height: 8px;
+}
+
+#signInButton {
+    background-color: #4285F4;
+    border-radius: 3px;
+    border: transparent;
+    color: white;
+    font-family: Verdana;
+    font-size: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+
+}
+
+#signInButton:hover {
+    background-color: dark blue;
+}
+
+.advFont {
+    font-size: 12px;
+}
+
+.advInp {
+    height: 23px;
+    width: 570px;
+}
+
+.navBar {
+    @extend %inline;
+    width: $full;
+}
+
+.navLeft {
+    @extend %inline;
+    float: left;
+}
+
+.navRight {
+    @extend %inline;
+    float: right;
+}
+
+.navItem {
+    @extend %inline;
+}
+

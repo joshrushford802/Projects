@@ -1,0 +1,31 @@
+{% extends "network/layout.html" %}
+
+{% block title %}My Social Media - New Register{% endblock %}
+
+{% block body %}
+
+    <h1>Create New Account</h1>
+
+    {% if alert %}
+        <div>{{ alert }}</div>
+    {% endif %}
+
+    <form method="post" action="{% url 'sign_up' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <input placeholder="Create A Username" type="text" name="usr_nm" class="form-control">
+        </div>
+        <div class="form-group">
+            <input placeholder="Enter Email Address" class="form-control" type="email" name="email_address">
+        </div>
+        <div class="form-group">
+            <input placeholder="Enter Unique Password" type="password" class="form-control" name="passw">
+        </div>
+        <div class="form-group">
+            <input placeholder="Re-Type Password" type="password" class="form-control" name="authenticate">
+        </div>
+        <input value="Enter your Network!" class="btn btn-primary" type="submit">
+    </form>
+    If you already have an active account: <a href="{% url 'logged' %}">Click here to log in.</a>
+
+{% endblock %}

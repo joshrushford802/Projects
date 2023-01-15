@@ -1,0 +1,26 @@
+{% extends "network/layout.html" %}
+
+{% block title %}My Social Media - Login{% endblock %}
+
+{% block body %}
+
+    <h2>Login Here</h2>
+
+    {% if alert %}
+        <div>{{ alert }}</div>
+    {% endif %}
+
+    <form action="{% url 'logged' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input placeholder="Enter Username" type="text" name="usr_nm" class="form-control">
+        </div>
+        <div class="form-group">
+            <input placeholder="Enter Password" type="password" class="form-control" name="passw">
+        </div>
+        <input class="btn btn-info" value="Attempt Login" type="submit">
+    </form>
+
+    If not registered: <a href="{% url 'sign_up' %}">Clcik Here</a>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "network/layout.html" %}
+
+{% block title %}My Social Media - My Profile{% endblock %}
+
+{% block body %}
+    <h1 class="mx-5">{{ username }}</h1>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <h4 class="col-4"><u>Number of Subscriptions:</u> {{ subbed.count }}</h4>
+            <h4 class="col-4"><u>Subscribers:</u> {{ subs.count }}</h4>
+            <h4 class="col-4"><u>Liked Posts:</u> {{ te.count }}</h4>
+            {% if user.is_authenticated %}
+                {% if dweller_account != user %}
+                    {% if confirmed_sub %}
+                        <form method="post" action="{% url 'unsubscribe' %}">
+                            {% csrf_token %}
+                            <input value="{{ dweller_account }}" name="sub" type="hidden" />
+                            <input value="unsubscribe" class="btn btn-success" type="submit" />
+                        </form>
+                    {% else %}
+                        <form action="{% url 'subscribe' %}" method="post">
+                            {% csrf_token %}
+                            <input name="sub" type="hidden" value="{{ dweller_account }}" />
+                            <input value="Subscribe" type="submit" class="btn btn-success" />
+                        </form>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="my-5 mx-5">
+        {% for post in num_pg %}
+            <div>
+                <h4><a href="{% url 'account' user_id=post.maker.id %}">{{ post.maker }}</a></h4>
+                <p>{{ post.calender_date }}</p>
+                <h6 id="material_{{ post.id }}">{{ post.material }}</h6>
+            <hr>
+        {% endfor %}
+    </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-center">
+            {% if num_pg.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ num_pg.previous_page_number }}">Go Back</a></li>
+            {% endif %}
+            {% if num_pg.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{ num_pg.next_page_number }}">Go Forward</a></li>
+              {% endif %}
+        </ul>
+      </nav>
+{% endblock %}

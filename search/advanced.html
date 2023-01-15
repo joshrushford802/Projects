@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Google</title>
+        <link rel="stylesheet" href="/styles.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+    </head>
+    <body>
+        <div class="navBar">
+            <div id="advancedGoogle">
+                <img style="height:27px; width: 77px;" src="/images/googlelogo_color_272x92dp.png">
+            </div>
+            <div class="navRight">
+                <div class="navItem">
+                    <a href="index.html">Regular Search</a>
+                </div>
+                <div class="navItem">
+                    <button id="signInButton">Sign-in</button>
+                </div>
+            </div>
+        </div>
+        <div id="advSrch">
+            <p style="color: #DB4437; font-size: 18px;">&nbsp&nbsp&nbsp&nbsp Advanced Search</p>
+            <br>
+            <hr>
+        </div>
+        <div id="advForm">
+            <p style="font-size: 16px;">Find pages with...</p>
+            <form action="https://google.com/search">
+                <div>
+                    <p class="advFont">all these words: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+                    <input class="advInp" type="text" name="as_q">
+                    <p class="advFont">&nbsp&nbsp Type the important words:  tricolor rat terrier</p>
+                </div>
+                <div>
+                    <p class="advFont">this exact word or phrase: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+                    <input class="advInp" type="text" name="as_epq">
+                    <p class="advFont">&nbsp&nbsp Put exact words in quotes:  "rat terrier"</p>
+                </div>
+                <div>
+                    <p class="advFont">any of these words: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+                    <input class="advInp" type="text" name="as_oq">
+                    <p class="advFont">&nbsp&nbsp Type OR between all the words you want:  miniature OR standard</p>
+                </div>
+                <div>
+                    <p class="advFont">none of these words: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+                    <input class="advInp" type="text" name="as_eq">
+                    <p class="advFont">&nbsp&nbsp Put a minus sign just before words you don't want:<br>&nbsp&nbsp&nbsp -rodent, -"Jack Russell"</p>
+                </div>
+                <button id="advButton">Advanced Search</button>
+            </form>
+            <br>
+            <hr>
+        </div>
+    </body>
+</html>

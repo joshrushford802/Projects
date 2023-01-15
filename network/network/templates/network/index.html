@@ -1,0 +1,146 @@
+{% extends "network/layout.html" %}
+
+{% block title %}My Social Media - Home{% endblock %}
+
+{% block body %}
+
+    <u><h1 style="color: brown; text-align: center;" class="mt-4 mx-4">Your Personalized Content</h1></u>
+    {% if user.is_authenticated %}
+        <div style=" text-align: center;" class="mx-4 my-5">
+            <h3>Write Post Here:</h3>
+            <form action="{% url 'make_post' %}" method="post">
+                {% csrf_token %}
+                <textarea cols="100" name="material" row="10"></textarea>
+                <br/>
+                <input type="submit" value="Submit Post" class="btn btn-secondary"/>
+            </form>
+        </div>
+    {% endif %}
+
+    <div style="text-align: center;" class="my-5 mx-5">
+        {% for post in pg_posts %}
+            <div>
+                <h4><a href="{% url 'account' user_id=post.maker.id %}">{{ post.maker }}</a></h4>
+                <p>{{ post.calender_date }}</p>
+                <h6 id="material_{{ post.id }}">{{ post.material }}</h6>
+                {% if user.is_authenticated == True %}
+                    {% if post.maker == user %}
+                        <div class="mb-4 ml-4 justify-content-aroud">
+                            <button class="btn btn-info" type="button" data-toggle="modal" data-target="#make_changes_to_{{ post.id }}">Make Changes</button>
+                        </div>
+                        <div tabindex="-1" class="modal fade" role="dialog" id="make_changes_to_{{ post.id }}" aria-hidden="true" aria-labelledby="make_changes_to_{{ post.id }}_label">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Edit Post</h5>
+                                  <button aria-label="Close" type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <textarea rows="5" id="text_box_{{ post.id }}" class="form-control" name="material">{{ post.material }}</textarea>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-info" onclick="edit({{ post.id }})">Update Post</button>
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Finished</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        {% if post.id in like_array %}
+                            <button onclick="inc_dec_vote({{ post.id }}, {{ like_array }})" class="btn btn-info fa fa-thumbs-down col-1" id="{{ post.id }}"></button>
+                        {% else %}
+                            <button onclick="inc_dec_vote({{ post.id }}, {{ like_array }})" class="btn btn-info fa fa-thumbs-up col-1" id="{{ post.id }}"></button>
+                        {% endif %}
+                        <form>
+                            Up-Votes: <input style="border: none; background-color: white;" type="button" id="num" value="0"/>
+                        </form>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if pg_posts.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ pg_posts.previous_page_number }}">Previous Page</a></li>
+            {% endif %}
+            {% if pg_posts.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{ pg_posts.next_page_number }}">Next Page</a></li>
+              {% endif %}
+        </ul>
+      </nav>
+
+      <script>
+
+        function inc_dec_vote(name, liked_id) {
+            const btn = document.getElementById(`${name}`);
+
+            btn.classList.remove('fa-thumbs-up')
+            btn.classList.remove('fa-thumbs-down')
+
+            if(liked_id.indexOf(name) >= 0) {
+                var vote_status = true;
+            } else {
+                var vote_status = false;
+            }
+
+            if(vote_status === true) {
+                fetch(`/void_vote/${name}`)
+                .then(response => response.json)
+                .then(result => {
+                btn.classList.add('fa-thumbs-up')
+                })
+            } else {
+                fetch(`/increment_vote/${name}`)
+                .then(response => response.json)
+                .then(result => {
+                btn.classList.add('fa-thumbs-down')
+                })
+
+            }
+            vote_status = !vote_status
+
+            var val = parseInt(document.getElementById('num').value, 10);
+            val++;
+            document.getElementById('num').value = val;
+        }
+
+        function edit(l) {
+            const txt = document.getElementById(`text_box_${l}`).value;
+            console.log(txt);
+            console.log(l);
+            const material = document.getElementById(`material_${l}`);
+            const k = document.getElementById(`make_changes_to_${l}`);
+            fetch(`/make_adjustments/${l}`, {
+                method: "POST",
+                headers: {"Content-type": "application/json", "X-CSRFToken": findBadge("csrftoken")},
+                body: JSON.stringify({
+                    material: txt
+                })
+            })
+            .then(response => response.json())
+            .then(result => {
+                material.innerHTML = result.data;
+                k.classList.remove('show');
+                k.setAttribute('style', 'display: none');
+                k.setAttribute('aria-hidden', 'true');
+                const r = document.getElementsByClassName('modal-backdrop');
+                for(let n=0; n < r.length; n++) {
+                    document.body.removeChild(r[n]);
+                }
+            })
+
+        }
+
+        function findBadge(b) {
+            const num = `; ${document.cookie}`;
+            const splited = num.split(`; ${b}=`);
+            if(splited.length == 2) return splited.pop().split(';').shift();
+        }
+    </script>
+
+{% endblock %}
