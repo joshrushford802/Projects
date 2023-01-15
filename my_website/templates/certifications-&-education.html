@@ -1,0 +1,84 @@
+{% extends "template.html" %}
+
+{% block title %}
+    Josh R - Certifications & Education
+{% endblock %}
+
+{% block main %}
+
+    <!--Education title-->
+    <div class="margin_bottom_top">
+        <h1 style="text-align: center;">Education</h1>
+    </div>
+
+    <div class="container">
+
+        <img class="edu_img" alt="snhu" src="/static/299089016_10158477415881184_8513795830392208125_n.jpg">
+
+        <div class="text">
+          <p>I'm currently attending SNHU<br> for a <span style="font-weight: bold;">AS Computer Science with<br>Conc/ Software Engineering</span></p>
+        </div>
+      </div>
+
+      <!--Certifications title-->
+      <div class="cert_explaination">
+        <h1 style="text-align: center;">Certifications</h1>
+      </div>
+
+      <h3 class="center_margin_bottom" style="font-weight: 300; padding-left: 15px; padding-right: 15px;">
+        Click the link to my
+        <a class="link" onclick="window.open('https://www.credly.com/users/josh-rushford/badges')" class="link">acclaim page</a>
+        to verify my CompTIA certifications
+      </h3>
+
+      <!--CompTIA A+ certification-->
+      <div class="container">
+        <img class="edu_img" alt="CompTIA A+" src="/static/comptia_a+.png">
+        <div class="text">
+          <p><u>CompTIA A+</u><br><span style="font-weight: bold;">Recieved:</span> August 26, 2020&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        </div>
+      </div>
+
+      <!--CompTIA Network+ certification-->
+      <div class="container">
+        <img id="network_img" alt="CompTIA Network+" src="/static/comptia_network+.png">
+        <div class="text">
+          <p><u>CompTIA Network+</u><br><span style="font-weight: bold;">Recieved:</span> November 29, 2020</p>
+        </div>
+      </div>
+
+      <!--CompTIA CIOS certification-->
+      <div class="container" style="margin-top: 1.5em; margin-bottom: 3em;">
+        <img id="cios_img" alt="CompTIA CIOS" src="/static/comptia_cios.png">
+        <div class="text">
+          <p><u>CompTIA CIOS</u><br><span style="font-weight: bold;">Recieved:</span> November 29, 2020</p>
+        </div>
+      </div>
+
+      <div id="center-left">
+        <!--CS50x certification-->
+        <div style="margin-top: 1.5em; margin-bottom: 3em;">
+          <img id="cs50x_img" alt="CS50x" src="/static/CS50x.png">
+          <div class="text">
+            <p><u>CS50x - Harvard University</u><br><span style="font-weight: bold;">Recieved:</span> September 15, 2022</p>
+          </div>
+        </div>
+
+        <!--CS50P certification-->
+        <div style="margin-top: 1.5em; margin-bottom: 3em;">
+          <img id="cs50x_img" alt="CS50P" src="/static/CS50P.png">
+          <div class="text">
+            <p><u>CS50P - Introduction to Programming with Python - Harvard University</u><br><span style="font-weight: bold;">Recieved:</span> September 15, 2022</p>
+          </div>
+        </div>
+
+        <!--CS50W certification-->
+        <div style="margin-top: 1.5em; margin-bottom: 3em;">
+          <img id="cs50x_img" alt="CS50W" src="/static/CS50W.png">
+          <div class="text">
+            <p><u>CS50W - Web Programming with Python and Javascript - Harvard University</u><br><span style="font-weight: bold;">Recieved:</span> January 4, 2023</p>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

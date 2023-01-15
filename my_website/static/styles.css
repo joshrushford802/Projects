@@ -1,0 +1,199 @@
+.nav-button {
+    background-color: #212529;
+    border: transparent;
+    border-radius: 25px;
+    color: white;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 5epx;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.nav-button:hover {
+    background-color: #343a40;
+}
+
+.img_placement {
+    border-radius: 75px;
+    display: block;
+    padding: 25px;
+    height: 30%;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#home_p {
+    text-align: center;
+    font-size: 25px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2em;
+    margin-bottom: 5em;
+    font-weight: 450;
+}
+
+.margin_bottom_top {
+    margin-top: 5em;
+    margin-bottom: 3em;
+}
+
+.cert_explaination {
+    margin-top: 5em;
+    margin-bottom: 1.5em;
+}
+
+svg {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+svg:hover {
+    cursor: pointer;
+}
+
+ul > li {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.center_margin_bottom {
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+.link {
+    color: red;
+}
+
+.link:hover {
+    color: #931b05;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.edu_img {
+    width: 15%;
+    border-radius: 75px;
+    height: 15%;
+    margin-left: 5%;
+}
+
+#network_img {
+    width: 15.5%;
+    border-radius: 75px;
+    height: 15.5%;
+    margin-left: 5%;
+}
+
+#cios_img {
+    width: 12.75%;
+    border-radius: 75px;
+    height: 12.75%;
+    margin-left: 6.25%;
+    margin-right: 1em;
+}
+
+#cs50x_img {
+    width: 12.75%;
+    height: 12.75%;
+    margin-left: 6.25%;
+    margin-right: 1em;
+}
+
+.text {
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.project_section {
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+#project_div {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+    display: block;
+    background-image: url('comp_wallpaper.jpg');
+    padding-bottom: 2400px;
+}
+
+#project_div > div {
+    margin: 25px;
+}
+
+#project_div > div > ul {
+    text-align: center;
+    padding: 15px;
+}
+
+#project_div > div > ul > li {
+    padding: 10px;
+}
+
+#center-left {
+    display: inline-block;
+    margin-left: 22%;
+}
+
+#center-left > div {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+#firstNavButton {
+    margin-left: 2em;
+}
+
+@media (max-width: 960px) {
+    #center-left {
+        display: inline-block;
+        margin-left: 0%;
+        padding-left: 0%;
+        padding-right: 2%;
+    }
+
+    .img_placement {
+        border-radius: 75px;
+        display: block;
+        padding: 25px;
+        height: 80%;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #navBarCustomeMobileConfiguration {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+    }
+
+    #navBarCustomeMobileConfiguration > button {
+        display: inline-block;
+        border: 1px solid grey;
+        border-radius: 10px;
+        width: 70%;
+        margin: auto;
+        margin-top: 8px;
+    }
+
+    #navBarCustomeMobileConfiguration > firstNavButton {
+        margin-left: 0em;
+    }
+}
