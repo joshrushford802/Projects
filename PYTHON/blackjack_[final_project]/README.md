@@ -1,0 +1,15 @@
+# Blackjack
+    #### Video Demo:  https://youtu.be/vYepK-N4slc
+    #### Description:
+
+    This application is a simulated game of blackjack. In blackjack, there are often numerous players, including a dealer who hands out a round of cards. The players are not supposed to show their cards and, if they get close to 21, they can choose to "call" in the form of a double knock on the card table in hopes that they will be closest to 21 when everyone else either goes over 21 or calls as well. The dealer is included in this. When everyone either goes over 21 or everyone calls, everyone lays their hand down and the person with a sum total closest to 21, without going over, wins the round and all the bets of the table go to them. The goal of the game is to get as close to a score of 21 as possible without going over that mark. If you go over 21, you're automatically out of the round.
+
+    This application works a bit different than the original game. Whereas in original blackjack, there are multiple players, there is only you and the dealer in this game, which does occasionally happen in real-life blackjack. Every round of the game the dealer shuffles the deck so everything remains randomized and fair. This is a simulated full deck of 52 cards, 4 of each card. There are aces, 2s, 3s, 4s, 5s, 6s, 7s, 8s, 9s, 10s, jacks, queens, and kings. If the player or dealer draws an ace, if their total hand is 11 or under, the ace is worth 10 points because that would bring them to 21. If their total hand is over 11, the ace is valued at 1 point. Jacks, queens, and kings are always worth 10 points.
+
+    If you get close to 21 and you're satisfied with where the sum of your hand is, you can "call" or knock, which essentially means you don't draw another card in hopes that the dealer's next card will make their hand over 21 and you win. If, however, both you and the dealer choose to call, there is a duel card that will automatically take place. This will put both you and the dealer over 21, but now the one with the lowest summed hand wins the round. If by chance this duel card yields matching sums between you and the dealer, there is another duel card layed down and this will continue until one hand is different from the other.
+
+    If you and the dealer both get a summed total of 21, there is a draw, aka tie, and no one wins or loses the round.
+
+    A little trick from the developer himself: the dealer is programmed to call once it's hand is a sum total of 17 or more. Use this information to your advantage! For instance, if the dealer's hand is at 16 and you're pretty close to 21 yourself, perhaps consider calling, as it's a gaurantee the dealer will not call and the chance of them getting a card that puts them over 21 is fairly high!
+
+    Good luck and thank you for playing my game! Although it only took me one evening to create this baby, I worked hard on it none-the-less and I'm proud of what I made!
