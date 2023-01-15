@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit Page
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Page</h1>
+
+    <form action="{% url 'update_changes' %}" method="POST">
+        {% csrf_token %}
+        <br>
+        <input style="width: 350px" name="updated_title" type="text" value="{{ title_edit }}">
+        <br>
+        <br>
+        <h5>Enter Content in the Form of Markdown Text:</h5>
+        <textarea style="height: 450px; width: 600px;" name="updated_md">{{ md_to_edit }}</textarea>
+        <br>
+        <input style="background-color: #34A853; border: transparent; border-radius: 7px; height: 40px; width: 100px;" type="submit" value="Post">
+    </form>
+
+{% endblock %}

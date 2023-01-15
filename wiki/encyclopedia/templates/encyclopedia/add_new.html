@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+    <h1>Add New Page</h1>
+
+    <form action="{% url 'add_new_entry' %}" method="POST">
+        {% csrf_token %}
+        <br>
+        <input style="width: 350px" name="new_title" type="text" placeholder="Enter Title">
+        <br>
+        <br>
+        <h5>Enter Content in the Form of Markdown Text:</h5>
+        <textarea style="height: 450px; width: 600px;" name="new_md" placeholder="..."></textarea>
+        <br>
+        <input style="background-color: #34A853; border: transparent; border-radius: 7px; height: 40px; width: 100px;" type="submit" value="Post">
+    </form>
+
+{% endblock %}
