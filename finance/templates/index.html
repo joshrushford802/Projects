@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Main
+{% endblock %}
+
+{% block main %}
+    <table>
+        <tr>
+            <td>Stock Abbreviations</td>
+            <td>Owned Shares</td>
+            <td>Current Value</td>
+            <td>Total Cash</td>
+        </tr>
+            {% for i in datab %}
+                <tr>
+                    <td>
+                        {{ i["symbol"] }}
+                    </td>
+                    <td>
+                        {{ i["shares"] }}
+                    </td>
+                    <td>
+                        {{ i["price"] }}
+                    </td>
+                </tr>
+            {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ monies }}</td>
+        </tr>
+    </table>
+{% endblock %}
