@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            function changeRed(color)
+            {
+                document.getElementById('but1').style.background = 'red';
+                document.getElementById('sysResponse').innerHTML = "Incorrect";
+            }
+
+            function changeRed2(color)
+            {
+                document.getElementById('but2').style.background = 'red';
+                document.getElementById('sysResponse').innerHTML = "Incorrect";
+            }
+
+            function changeGreen(color)
+            {
+                document.getElementById('but3').style.background = 'green';
+                document.getElementById('sysResponse').innerHTML = "Correct!";
+            }
+
+            document.addEventListener('DOMContentLoaded', function(){
+                document.querySelector('#submit').addEventListener('click', function(){
+                    let input = document.querySelector('input');
+                    if (input.value === 'Two' || input.value === 'two' || input.value === '2')
+                    {
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#sysResponse2').innerHTML = "Correct!";
+                    }
+                    else
+                    {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#sysResponse2').innerHTML = "Incorrect";
+                    }
+            });
+        });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the best CS class?</h3>
+
+                <button id='but1' class="b" onclick="changeRed();">Google certification</button>
+                <button id='but2' class="b" onclick="changeRed2();">YouTube tutorials</button>
+                <button id='but3' class="b" onclick="changeGreen();">CS50x</button>
+
+                <p id="sysResponse"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>How many CS50 classes should you take before applying for a job?</h3>
+
+                <input type="text">
+
+                <button class="b" id="submit">Submit</button>
+
+                <p id="sysResponse2"></p>
+
+            </div>
+        </div>
+    </body>
+</html>
