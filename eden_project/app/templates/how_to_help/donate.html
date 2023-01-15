@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block title %}Donate - Lake Eden{% endblock title %}
+
+{% block body %}
+
+    <div class="container pt-5 ps-5">
+        <h1 style="font-weight: bold; font-size: 45px; padding-bottom: 10px;">Join, Renew, or Donate</h1>
+        <p style="font-weight: 400; font-size: 22px; padding-bottom: 60px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <form action="{% url 'make_donation' %}" method="POST">
+            {% csrf_token %}
+            <p style="font-weight: 400; font-size: 18px; padding-bottom: 60px;">
+                <em>Contributions are tax deductible as required by law.</em>
+            </p>
+
+            <strong style='font-size: 24px; font-weight: 500; padding-left: 4%; padding-right: 10%;'>Membership or donation amount:</strong>
+            <br><br>
+            <div style="padding-left: 10%; padding-right: 10%;" class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                $25 — Individual Membership
+                </label>
+            </div>
+            <div style="padding-left: 10%; padding-right: 10%;" class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                $50 — Family Membership
+                </label>
+            </div>
+            <div style="padding-left: 10%; padding-right: 10%;" class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                $100 — Conservationist
+                </label>
+            </div>
+            <div style="padding-left: 10%; padding-right: 10%;" class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                $250 — Defender
+                </label>
+            </div>
+            <div style="padding-left: 10%; padding-right: 10%;" class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                $500 — Protector
+                </label>
+            </div>
+            <div style="padding-left: 10%; padding-right: 10%;" class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                $1000 — Champion
+                </label>
+            </div><div style="padding-left: 10%; padding-right: 10%;" class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                Other amount (enter on next page)
+                </label>
+            </div>
+            <br><br>
+
+            <div style="padding-left: 4%; padding-right: 10%;" class="form-group">
+                <strong style='font-size: 24px; font-weight: 500;'>Use donation/ membership only for this project <em>(optional)</em></strong>
+                <input style="width: 100%; height: 50px; margin-bottom: 47px;" placeholder="Project..." class="form-control" type="text" maxlength="40" name="project_specification">
+            </div>
+            <div style="padding-left: 4%; padding-right: 10%;" class="form-group">
+                <strong style='font-size: 24px; font-weight: 500;'>Make my donation/ membership in honor of this person <em>(optional)</em></strong>
+                <input style="width: 100%; height: 50px; margin-bottom: 47px;" placeholder="In honor of..." class="form-control" type="text" maxlength="80" name="in_honor_of">
+            </div>
+            <div style="padding-left: 4%; padding-right: 10%;" class="form-group">
+                <strong style='font-size: 24px; font-weight: 500;'>Comments <em>(optional)</em></strong>
+                <textarea style="width: 100%; height: 90px; margin-bottom: 47px;" placeholder="....." class="form-control" maxlength="270" name="comments"></textarea>
+            </div>
+        </div>
+            <div style="justify-content: center; text-align: center;">
+                <input type="submit" value="Continue to Secure Payment Page" class="btn btn-primary px-5 mt-1">
+            </div>
+        </form>
+
+    <!-- FIX TO SUBMIT FORM AND REDIRECT TO PAYPAL ACCOUNT
+        <div style="width: 50%; margin: auto; text-align: center;">
+        <a href="{% url 'make_donation' %}" class="btn btn-primary px-5 mt-1 mb-4">Continue to Secure Payment Page</a>
+    </div> -->
+
+{% endblock %}
