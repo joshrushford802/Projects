@@ -1,0 +1,13 @@
+#logo {
+    height: 100px;
+    width: 100px;
+}
+
+#homePgImg {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.naAHov:hover {
+    background-color: #ADD8E6;
+}
