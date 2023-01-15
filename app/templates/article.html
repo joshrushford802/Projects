@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}News & Events - Lake Eden{% endblock title %}
+
+{% block body %}
+
+
+    {% for article in articles %}
+        {% if article == extra %}
+            <div>
+                {% if article.image %}
+                <div class="my-5" style="width: 100%; text-align: center;">
+                    <img src="{{ article.image }}" style="height: 500px; width: 500px;">
+                </div>
+                {% endif %}
+                <h1 style="width: 100%; text-align: center; margin-top: 25px;">{{ article.title }}</h1>
+                <h3 style="width: 100%; text-align: center;">{{ article.serialize.timestamp }}</h3>
+                <br>
+                <div style="margin-left: 18%; margin-right: 18%; margin-bottom: 25px;">
+                    <p style="font-size: 22px; word-break: break-word;">{{ article.content|safe }}</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
