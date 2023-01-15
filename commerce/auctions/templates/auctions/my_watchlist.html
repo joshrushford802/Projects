@@ -1,0 +1,26 @@
+{% extends "auctions/layout.html" %}
+{% load humanize %}
+
+{% block body %}
+    <h2>My Watchlist</h2>
+
+    {% for listing in retrieve_listing %}
+        <div style="padding-left: 15px;">
+            <br>
+            <h3><a href="{% url 'get_listing' id=listing.id %}">{{ listing.listing_name }}</a></h3>
+            {{ listing.group }}
+            <br>
+            <b style="color: #DB4437;">Seller</b>: {{ listing.seller }}
+            <br>
+            <img style="height: 350px; width: 350px;" src="{{ listing.image_representation }}">
+            <br>
+            <b style="color: #DB4437;">Price</b>: ${{ listing.initial_price | intcomma }}
+            <br>
+            {{ listing.product_description }}
+            <br>
+            <br>
+        </div>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

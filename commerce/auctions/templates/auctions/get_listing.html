@@ -1,0 +1,97 @@
+{% extends "auctions/layout.html" %}
+{% load humanize %}
+
+{% block body %}
+
+    {% if user == retrieve_listing.initial_price.bidder and not retrieve_listing.status %}
+        <h2 style="text-align: center; color: green;">You won the auction!</h2>
+    {% endif %}
+
+    {% if not retrieve_listing.status and not user == retrieve_listing.initial_price.bidder %}
+        <h2 style="text-align: center; color: red;">This auction no longer exists</h2>
+    {% endif %}
+
+    {% if status_update %}
+        {% if working_status %}
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Success!</h4>
+                <p>You have successfully placed a bid on this item! Your bid will be processed shortly.</p>
+                <hr>
+                <p class="mb-0">Please feel free to place another bid if someone beats your previous bid. You can bid as many times as you'd like until the seller closes the auction.</p>
+            </div>
+        {% else %}
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Failure!</h4>
+                <p>Whoops, looks like something went wrong. You may have put in a bid below the current price. Please try again with a bid above the current price.</p>
+                <hr>
+                <p class="mb-0">If the above is not the case, there may be a system's error. Please contact administration immediately.</p>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <h1 style="text-align: center;">{{ retrieve_listing.listing_name }}</h1>
+
+    <div style="text-align: center;">
+        <br>
+        <h3><b style="color: #DB4437;">Seller</b>: {{ retrieve_listing.seller }}</h3>
+        <br>
+        <br>
+        <img style="height: 650px; width: 650px;" src="{{ retrieve_listing.image_representation }}">
+        <br>
+        <br>
+        <h3><b style="color: #DB4437;">Current Price is</b>: ${{ retrieve_listing.initial_price | intcomma }}</h3>
+        <br>
+        <br>
+        <h5>{{ retrieve_listing.product_description }}</h5>
+        <br>
+        {% if user.is_authenticated %}
+        <form action="{% url 'bid' id=retrieve_listing.id %}" method="POST">
+            {% csrf_token %}
+            <input name="bid_placement" style="border-color: #34A853; border-radius: 7px; height: 40px; width: 145px;" type="number" step="0.01" placeholder="Enter bid amount">
+            <button style="background-color: #DB4437; border: transparent; border-radius: 7px; height: 40px; width: 130px;" type="submit">Place Bid</button>
+        </form>
+        <br><br>
+            {% if watchlist_confirmation %}
+                <form action="{% url 'rm_watchlist' id=retrieve_listing.id %}" method="POST">
+                    {% csrf_token %}
+                    <button style="background-color: #F4B400; border: transparent; border-radius: 7px; height: 40px; width: 250px;" type="submit">Remove From Watchlist</button>
+                </form>
+            {% else %}
+                <form action="{% url 'add_watchlist' id=retrieve_listing.id %}" method="POST">
+                    {% csrf_token %}
+                    <button style="background-color: #34A853; border: transparent; border-radius: 7px; height: 40px; width: 250px;" type="submit">Add to Watchlist</button>
+                </form>
+            {% endif %}
+        {% endif %}
+        <br>
+        {% if retrieve_listing.status and user.is_authenticated %}
+            {% if seller_verification %}
+                <form action="{% url 'delete_post' id=retrieve_listing.id %}" method="POST">
+                    {% csrf_token %}
+                    <button style="background-color: red; border: transparent; border-radius: 7px; height: 40px; width: 250px;" type="submit">End Auction</button>
+                </form>
+            {% endif %}
+        {% endif %}
+        <br>
+        {% if user.is_authenticated %}
+        <form action="{% url 'user_comments' id=retrieve_listing.id %}" method="POST">
+            {% csrf_token %}
+            <input name="comment" style="border-color: #34A853; border-radius: 7px; height: 40px; width: 250px;" type="text" placeholder="Write Comments here"></input>
+            <button style="background-color: #4285F4; border: transparent; border-radius: 7px; height: 40px; width: 150px;" type="submit">Submit</button>
+        </form>
+        <br>
+        {% endif %}
+    </div>
+    <div style="padding-left: 30px;">
+        {% for i in collection_of_comments %}
+            <b style="color: #DB4437;">Comment from {{ i.seller }}</b>: {{ i.comment }}
+            <br>
+            <br>
+        {% empty %}
+            No comments yet...
+        {% endfor %}
+        <br>
+        <br>
+    </div>
+
+{% endblock %}

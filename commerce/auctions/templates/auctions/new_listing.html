@@ -1,0 +1,35 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+
+    <h1>Create New Listing</h1>
+
+    <form action="{% url 'new_listing' %}" method="POST">
+        {% csrf_token %}
+        <br>
+        <input style="width: 350px" name="listing_name" type="text" placeholder="Enter Title of Listing...">
+        <br>
+        <br>
+        <input style="width: 350px" name="image_representation" type="text" placeholder="Enter Path of Image...">
+        <br>
+        <br>
+        <input style="width: 350px" min="0" name="initial_price" type="number" step="0.01" placeholder="Enter Initial Price...">
+        <br>
+        <br>
+        <textarea style="height: 450px; width: 600px;" name="product_description" placeholder="Describe Listing..."></textarea>
+        <br>
+        <br>
+        <h4 style="display: inline;">Group Listing Belongs to: </h4>
+        <select name="group" style="display: inline;">
+            {% for group in groups %}
+                <option value="{{ group }}">{{ group }}</option>
+            {% empty %}
+                No groups available...
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <input style="background-color: #34A853; border: transparent; border-radius: 7px; height: 40px; width: 100px;" type="submit" value="Post">
+    </form>
+
+{% endblock %}

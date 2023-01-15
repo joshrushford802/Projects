@@ -1,0 +1,44 @@
+{% extends "auctions/layout.html" %}
+{% load humanize %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    <form action="{% url 'group_search' %}" method="POST">
+        {% csrf_token %}
+        <h4 style="display: inline;">Search by Group: </h4>
+        <select name="group" style="display: inline;">
+            {% for group in groups %}
+                <option value="{{ group }}">{{ group }}</option>
+            {% empty %}
+                No groups available...
+            {% endfor %}
+        </select>
+        &nbsp<input style="background-color: #34A853; border: transparent; border-radius: 7px; height: 35px; width: 95px;" type="submit" value="Go">
+    </form>
+
+    {% for listing in live_listings %}
+        <div style="padding-left: 15px;">
+            <br>
+            <h3><a href="{% url 'get_listing' id=listing.id %}">{{ listing.listing_name }}</a></h3>
+            {{ listing.group }}
+            <br>
+            <b style="color: #DB4437;">Seller</b>: {{ listing.seller }}
+            <br>
+            <img style="height: 350px; width: 350px;" src="{{ listing.image_representation }}">
+            <br>
+            <b style="color: #DB4437;">Price</b>: ${{ listing.initial_price | intcomma }}
+            <br>
+            {{ listing.product_description }}
+            <br>
+            <br>
+            {% empty %}
+                <br>
+                <br>
+                <h6 style="padding-left: 15px;">Whoops, no listings in category...</h6>
+                <br>
+        </div>
+        <hr>
+    {% endfor %}
+
+{% endblock %}
