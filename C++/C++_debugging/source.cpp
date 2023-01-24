@@ -48,4 +48,6 @@ int main() // This must be specified as type "int", not as "void".
 	}
 
 	cout << "Program Finished." << endl; // Added a new line to denote to the user the end of the program.
+	
+	return 0;
 }
