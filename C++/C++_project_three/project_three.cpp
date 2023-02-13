@@ -123,7 +123,7 @@ void optionThree() {
         }
 
         // Compare the two vectors and, if the item is not in the comparison vector, add it and display it's
-        // count, otherwise fill it with an empty string so an error doesn't occur.
+        // count in the form of a histogram, otherwise fill it with an empty string so an error doesn't occur.
         if (find(compareFile.begin(), compareFile.end(), file.at(j)) == compareFile.end()) {
             compareFile.push_back(file.at(j));
             cout << setfill(' ') << setw(11) << compareFile.at(j) << ' ';
