@@ -1,0 +1,18 @@
+The grocery tracking program I have made is designed specifically with the user in mind. There are four options for the user to choose from. The first three options
+perform actions, while the fourth option simply exits the program. The program starts with the title of the program, followed by a menu of options to choose from.
+This menu is presented to the user after every action is carried out.
+
+Fit also into this program is user input validation, so that there is zero chance of the user making a mistake that leads to a program crash. If the user inputs an
+incorrect character when choosing from the menu options (during menu selection, the user is only permitted to enter 1, 2, 3, or 4), an error message will pop up and
+the user will be presented with the menu again and repromoted for correct input.
+ 
+If the user enters 1, they will be prompted to enter a word, in which the program will then search the input.txt file for that word and return to the user the number
+of times that word is repeated in the file. Note that capitalization is important here.
+ 
+If 2 is entered, the program will return to the user a list of each item in the file with the frequency of times the item is repeated within the file.
+ 
+If the user enters 3, a similar chart is displayed, only it is in the form of a histogram - the frequency of each object represented by asterisks (*).
+ 
+Lastly, if 4 is entered, the program gracefully exits. Note that I added timers in the code to pause for two seconds between line prints when the program is exiting to
+give the user a more “cinematic” experience to the exiting of the program.
+ 
